@@ -1,0 +1,64 @@
+/* ============================================================
+   Vertt OS — Typography
+   Funnel Display  → headlines, numerics, brand voice (tight, bold)
+   Funnel Sans     → UI, body, tables, long-form
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-display: 'Funnel Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans:    'Funnel Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-heavy:    800;
+
+  /* Type scale (px) — data-dense product baseline is 14 */
+  --text-2xs: 11px;
+  --text-xs:  12px;
+  --text-sm:  13px;
+  --text-md:  14px;   /* product body / table default */
+  --text-lg:  16px;
+  --text-xl:  18px;
+  --text-2xl: 22px;
+  --text-3xl: 28px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  --text-6xl: 64px;
+  --text-7xl: 88px;
+
+  /* Line heights */
+  --leading-none:    1;
+  --leading-tight:   1.12;
+  --leading-snug:    1.28;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tighter: -0.03em;
+  --tracking-tight:   -0.015em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.02em;
+  --tracking-caps:    0.08em;   /* uppercase eyebrows / labels */
+
+  /* ---- Semantic roles ---- */
+  --display-family:  var(--font-display);
+  --heading-family:  var(--font-display);
+  --body-family:     var(--font-sans);
+
+  --eyebrow-size:    var(--text-xs);
+  --eyebrow-weight:  var(--weight-semibold);
+  --eyebrow-tracking:var(--tracking-caps);
+
+  --label-size:      var(--text-sm);
+  --label-weight:    var(--weight-medium);
+
+  --body-size:       var(--text-md);
+  --body-weight:     var(--weight-regular);
+  --body-leading:    var(--leading-normal);
+}

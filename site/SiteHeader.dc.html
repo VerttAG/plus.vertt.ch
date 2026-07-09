@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/styles.css">
+  <script src="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;font-family:var(--font-sans)}
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--red-300)}
+    @keyframes vx-menu-in{from{opacity:0}to{opacity:1}}
+    @media (max-width:760px){[data-hide-mobile]{display:none !important}}
+  </style>
+</helmet>
+
+<header style="height:68px;background:#0A0A0A;display:flex;align-items:center;gap:clamp(14px,3vw,36px);padding:0 clamp(16px,4vw,44px);border-bottom:1px solid rgba(255,255,255,0.14);box-sizing:border-box;width:100%">
+  <a href="index.html" style="display:flex;align-items:center;flex-shrink:0">
+    <img src="assets/logo/vertt-lockup-white.png" alt="Vertt" style="height:20px;display:block">
+  </a>
+
+  <nav data-hide-mobile="true" style="display:flex;align-items:center;gap:26px">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.78);letter-spacing:-0.01em" style-hover="color:#FFFFFF">
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}"><span style="width:5px;height:5px;border-radius:50%;background:var(--swiss-red);display:inline-block"></span></sc-if>
+      {{ t.home }}
+    </a>
+    <a href="ueber-uns.html" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.78);letter-spacing:-0.01em" style-hover="color:#FFFFFF">
+      <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}"><span style="width:5px;height:5px;border-radius:50%;background:var(--swiss-red);display:inline-block"></span></sc-if>
+      {{ t.about }}
+    </a>
+  </nav>
+
+  <div style="margin-left:auto;display:flex;align-items:center;gap:clamp(10px,2vw,22px)">
+    <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;letter-spacing:0.04em">
+      <button onClick="{{ setDe }}" aria-label="Deutsch" style="background:none;border:none;cursor:pointer;padding:2px;font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0.04em;color:{{ deColor }}" style-hover="color:#FFFFFF">DE</button>
+      <span style="color:rgba(255,255,255,0.28)">/</span>
+      <button onClick="{{ setEn }}" aria-label="English" style="background:none;border:none;cursor:pointer;padding:2px;font-family:var(--font-sans);font-size:13px;font-weight:600;letter-spacing:0.04em;color:{{ enColor }}" style-hover="color:#FFFFFF">EN</button>
+    </div>
+
+    <a data-hide-mobile="true" href="ueber-uns.html#kontakt" style="display:inline-flex">
+      <span style="display:inline-flex;align-items:center;height:38px;padding:0 18px;background:var(--swiss-red);color:#FFFFFF;font-size:14px;font-weight:600;letter-spacing:-0.01em;border-radius:var(--radius-md);white-space:nowrap;transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600);color:#FFFFFF">{{ t.contact }}</span>
+    </a>
+
+    <button onClick="{{ toggleMenu }}" aria-label="{{ t.menu }}" style="display:flex;flex-direction:column;justify-content:center;gap:6px;width:40px;height:40px;padding:9px;background:transparent;border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-md);cursor:pointer;transition:border-color 120ms var(--ease-standard)" style-hover="border-color:rgba(255,255,255,0.55)">
+      <span style="display:block;height:1.5px;background:#FFFFFF;width:100%"></span>
+      <span style="display:block;height:1.5px;background:#FFFFFF;width:100%"></span>
+    </button>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:400;background:rgba(10,10,10,0.985);display:flex;flex-direction:column;animation:vx-menu-in 180ms var(--ease-standard)">
+    <div style="height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,44px);border-bottom:1px solid rgba(255,255,255,0.14);flex-shrink:0">
+      <img src="assets/logo/vertt-lockup-white.png" alt="Vertt" style="height:20px;display:block">
+      <button onClick="{{ toggleMenu }}" aria-label="{{ t.close }}" style="width:40px;height:40px;background:transparent;border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-md);cursor:pointer;color:#FFFFFF;font-size:18px;line-height:1;font-family:var(--font-sans)" style-hover="border-color:rgba(255,255,255,0.55)">×</button>
+    </div>
+    <div style="flex:1;overflow:auto;display:flex;flex-direction:column;justify-content:center;padding:48px clamp(20px,6vw,72px);gap:0">
+      <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.42);margin-bottom:22px">{{ t.menuEyebrow }}</div>
+      <nav style="display:flex;flex-direction:column;gap:4px;max-width:720px">
+        <sc-for list="{{ menuLinks }}" as="link" hint-placeholder-count="5">
+          <a href="{{ link.href }}" style="display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.10);font-family:var(--font-display);font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-0.015em;color:#FFFFFF" style-hover="color:var(--red-300)">
+            <span style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:rgba(255,255,255,0.35);font-variant-numeric:tabular-nums">{{ link.num }}</span>
+            {{ link.label }}
+          </a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:34px;font-size:14px;color:rgba(255,255,255,0.62)">
+        <a href="ueber-uns.html#kontakt" style="color:rgba(255,255,255,0.62)" style-hover="color:#FFFFFF">{{ t.contactShort }}</a>
+        <a href="#" style="color:rgba(255,255,255,0.62)" style-hover="color:#FFFFFF">{{ t.imprint }}</a>
+        <a href="#" style="color:rgba(255,255,255,0.62)" style-hover="color:#FFFFFF">{{ t.privacy }}</a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 68}, &quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;home&quot;, &quot;about&quot;, &quot;b2b&quot;, &quot;ops&quot;, &quot;ir&quot;], &quot;default&quot;: &quot;home&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;lang&quot;: {&quot;editor&quot;: null, &quot;default&quot;: null, &quot;tsType&quot;: &quot;'de'|'en'|null&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false };
+
+  getLang() {
+    try { return this.props.lang || localStorage.getItem('vertt-lang') || 'de'; } catch (e) { return 'de'; }
+  }
+
+  setLang(lang) {
+    try { localStorage.setItem('vertt-lang', lang); } catch (e) {}
+    location.reload();
+  }
+
+  renderVals() {
+    const lang = this.getLang();
+    const de = {
+      home: 'Startseite', about: 'Über uns', contact: 'Kontakt aufnehmen', contactShort: 'Kontakt',
+      menu: 'Menü öffnen', close: 'Menü schliessen', menuEyebrow: 'Navigation',
+      imprint: 'Impressum', privacy: 'Datenschutz',
+      links: ['Startseite', 'Über uns', 'B2B Portal', 'Taxi-Operatoren Portal', 'Investor Relations'],
+    };
+    const en = {
+      home: 'Home', about: 'About us', contact: 'Get in touch', contactShort: 'Contact',
+      menu: 'Open menu', close: 'Close menu', menuEyebrow: 'Navigation',
+      imprint: 'Legal notice', privacy: 'Privacy',
+      links: ['Home', 'About us', 'B2B Portal', 'Taxi Operator Portal', 'Investor Relations'],
+    };
+    const t = lang === 'en' ? en : de;
+    const hrefs = ['index.html', 'ueber-uns.html', 'b2b-portal.html', 'taxi-operatoren-portal.html', 'investor-relations.html'];
+    const menuLinks = hrefs.map((href, i) => ({ href, label: t.links[i], num: '0' + (i + 1) }));
+    const active = this.props.active || '';
+    return {
+      t, menuLinks,
+      isHome: active === 'home',
+      isAbout: active === 'about',
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      deColor: lang === 'en' ? 'rgba(255,255,255,0.45)' : '#FFFFFF',
+      enColor: lang === 'en' ? '#FFFFFF' : 'rgba(255,255,255,0.45)',
+      setDe: () => this.setLang('de'),
+      setEn: () => this.setLang('en'),
+    };
+  }
+}
+</script>
+</body>
+</html>

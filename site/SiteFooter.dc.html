@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/styles.css">
+  <script src="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;font-family:var(--font-sans)}
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--red-300)}
+  </style>
+</helmet>
+
+<footer style="background:#0A0A0A;color:rgba(255,255,255,0.72);padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px) 0;box-sizing:border-box">
+  <div style="max-width:1360px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(32px,5vw,64px);padding-bottom:clamp(40px,6vw,64px);border-bottom:1px solid rgba(255,255,255,0.14)">
+
+      <div style="display:flex;flex-direction:column;gap:18px;grid-column:span 1">
+        <img src="assets/logo/vertt-lockup-white.png" alt="Vertt" style="height:22px;display:block;align-self:flex-start">
+        <p style="margin:0;font-family:var(--font-display);font-size:20px;font-weight:600;letter-spacing:-0.015em;line-height:1.28;color:#FFFFFF;max-width:280px">{{ t.claim }}</p>
+        <div style="display:flex;gap:10px;margin-top:6px">
+          <a href="#" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid rgba(255,255,255,0.18);border-radius:var(--radius-md);color:rgba(255,255,255,0.72)" style-hover="border-color:rgba(255,255,255,0.5);color:#FFFFFF">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"></path></svg>
+          </a>
+          <a href="#" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid rgba(255,255,255,0.18);border-radius:var(--radius-md);color:rgba(255,255,255,0.72)" style-hover="border-color:rgba(255,255,255,0.5);color:#FFFFFF">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53a3 3 0 0 0 2.12-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.42)">{{ t.navTitle }}</div>
+        <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="5">
+          <a href="{{ link.href }}" style="font-size:14px;color:rgba(255,255,255,0.72)" style-hover="color:#FFFFFF">{{ link.label }}</a>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.42)">{{ t.legalTitle }}</div>
+        <sc-for list="{{ legalLinks }}" as="link" hint-placeholder-count="3">
+          <a href="{{ link.href }}" style="font-size:14px;color:rgba(255,255,255,0.72)" style-hover="color:#FFFFFF">{{ link.label }}</a>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.42)">{{ t.contactTitle }}</div>
+        <a href="mailto:hello@vertt.ch" style="font-size:14px;color:rgba(255,255,255,0.72)" style-hover="color:#FFFFFF">hello@vertt.ch</a>
+        <a href="tel:+41440000000" style="font-size:14px;color:rgba(255,255,255,0.72);font-variant-numeric:tabular-nums" style-hover="color:#FFFFFF">+41 44 000 00 00</a>
+        <span style="font-size:14px;color:rgba(255,255,255,0.72)">{{ t.location }}</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:22px 0;font-size:13px;color:rgba(255,255,255,0.42)">
+      <span>© 2026 Vertt AG. All rights reserved.</span>
+      <span style="display:inline-flex;align-items:center;gap:8px">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--swiss-red);display:inline-block"></span>
+        {{ t.madeIn }}
+      </span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 420}, &quot;lang&quot;: {&quot;editor&quot;: null, &quot;default&quot;: null, &quot;tsType&quot;: &quot;'de'|'en'|null&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    let lang = 'de';
+    try { lang = this.props.lang || localStorage.getItem('vertt-lang') || 'de'; } catch (e) {}
+    const de = {
+      claim: 'Eine Plattform. Eine Partnerschaft. Alle Wege.',
+      navTitle: 'Navigation', legalTitle: 'Rechtliches', contactTitle: 'Kontakt',
+      location: 'Zürich, Schweiz', madeIn: 'Entwickelt in der Schweiz',
+      nav: ['Startseite', 'Über uns', 'B2B Portal', 'Taxi-Operatoren Portal', 'Investor Relations'],
+      legal: ['Impressum', 'AGB', 'Datenschutz'],
+    };
+    const en = {
+      claim: 'One platform. One partnership. Every journey.',
+      navTitle: 'Navigation', legalTitle: 'Legal', contactTitle: 'Contact',
+      location: 'Zurich, Switzerland', madeIn: 'Built in Switzerland',
+      nav: ['Home', 'About us', 'B2B Portal', 'Taxi Operator Portal', 'Investor Relations'],
+      legal: ['Legal notice', 'Terms', 'Privacy'],
+    };
+    const t = lang === 'en' ? en : de;
+    const hrefs = ['index.html', 'ueber-uns.html', 'b2b-portal.html', 'taxi-operatoren-portal.html', 'investor-relations.html'];
+    return {
+      t,
+      navLinks: hrefs.map((href, i) => ({ href, label: t.nav[i] })),
+      legalLinks: t.legal.map(label => ({ href: '#', label })),
+    };
+  }
+}
+</script>
+</body>
+</html>

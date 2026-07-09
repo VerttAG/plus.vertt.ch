@@ -1,22 +1,452 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vertt AG — B2B Portal</title>
-<meta name="description" content="Vertt AG — B2B Portal.">
-<link rel="icon" href="assets/logo/vertt-badge-on-black.png">
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/main.css">
+<script src="./support.js"></script>
 </head>
 <body>
-<site-header active="b2b"></site-header>
-<main id="app" data-stub="b2b"></main>
-<site-footer></site-footer>
+<x-dc>
+<helmet>
+  <title>Vertt B2B Portal — Mobilität für Unternehmen</title>
+  <meta name="description" content="Vertt bietet Unternehmen eine zentrale Plattform für Buchung, Mobilitätsmanagement, Reporting, Abrechnung und Servicequalität.">
+  <link rel="icon" href="assets/logo/vertt-badge-on-black.png">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/styles.css">
+  <script src="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/_ds_bundle.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--red-600)}
+    input::placeholder,textarea::placeholder{color:var(--neutral-400)}
+    @keyframes vx-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @media (max-width:760px){[data-hide-mobile]{display:none !important}}
+  </style>
+</helmet>
 
-<script src="assets/js/i18n.js"></script>
-<script src="assets/js/site-header.js"></script>
-<script src="assets/js/site-footer.js"></script>
-<script src="assets/js/page-stub.js"></script>
+<dc-import name="SiteHeader" active="b2b" lang="{{ curLang }}" style="position:sticky;top:0;z-index:300;display:block" hint-size="100%,68px"></dc-import>
+
+<main data-screen-label="B2B Portal">
+
+  <!-- HERO -->
+  <section data-screen-label="Hero" style="background:var(--surface-card);border-bottom:1px solid var(--border-subtle);padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:20px;animation:vx-rise 600ms var(--ease-standard) both">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-600)">{{ t.eyebrow }}</span>
+        <h1 style="margin:0;font-family:var(--font-display);font-size:clamp(34px,4.6vw,58px);font-weight:800;letter-spacing:-0.025em;line-height:1.08">{{ t.heroTitle }}</h1>
+        <p style="margin:0;font-size:clamp(15px,1.5vw,17px);line-height:1.65;color:var(--text-secondary);max-width:56ch">{{ t.heroSub }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
+          <a href="#kontakt" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:var(--action-primary-bg);color:#FFFFFF;font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--action-primary-bg-hover);color:#FFFFFF">{{ t.ctaConsult }}</a>
+          <a href="#kontakt" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:var(--surface-card);color:var(--text-primary);font-size:15px;font-weight:600;border:1px solid var(--border-default);border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--surface-hover);color:var(--text-primary)">{{ t.ctaDemo }}</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:8px">
+          <sc-for list="{{ heroPoints }}" as="p" hint-placeholder-count="3">
+            <span style="display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text-secondary)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+              {{ p }}
+            </span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:var(--surface-page);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:#0A0A0A;color:#FFFFFF">
+          <span style="display:inline-flex;align-items:center;gap:10px"><img src="assets/logo/vertt-badge-on-red.png" alt="" style="width:20px;height:20px;border-radius:24%"><span style="font-size:13px;font-weight:600">{{ t.mockTitle }}</span></span>
+          <span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5)">Helvetia Corp AG</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;padding:16px 18px 6px;--text-4xl:26px">
+          <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatCard" label="{{ t.mockStat1 }}" value="1’284" delta="+12%" delta-direction="up" hint-size="100%,104px"></x-import>
+          <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatCard" label="{{ t.mockStat2 }}" value="52’410" unit="CHF" hint-size="100%,104px"></x-import>
+          <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatCard" label="{{ t.mockStat3 }}" value="214" hint-size="100%,104px"></x-import>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:6px 18px 16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0 4px">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.mockTableTitle }}</span>
+            <span style="font-size:12px;font-weight:600;color:var(--red-600)">{{ t.mockViewAll }}</span>
+          </div>
+          <sc-for list="{{ mockRows }}" as="row" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-subtle);font-size:13px;background:var(--surface-page)">
+              <span style="font-weight:600;font-variant-numeric:tabular-nums;color:var(--text-secondary)">{{ row.id }}</span>
+              <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ row.route }}</span>
+              <span data-hide-mobile="true" style="font-variant-numeric:tabular-nums;color:var(--text-secondary)">{{ row.cost }}</span>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatusPill" status="{{ row.status }}" size="sm" hint-size="70px,18px">{{ row.statusLabel }}</x-import>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZIELGRUPPEN -->
+  <section data-screen-label="Zielgruppen" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:720px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.audEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.audTitle }}</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px">
+        <sc-for list="{{ audiences }}" as="a" hint-placeholder-count="8">
+          <div style="display:flex;flex-direction:column;gap:10px;padding:22px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-xs);transition:border-color 120ms var(--ease-standard)" style-hover="border-color:var(--border-strong)">
+            <span style="font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-0.015em">{{ a.title }}</span>
+            <span style="font-size:13px;line-height:1.5;color:var(--text-secondary)">{{ a.sub }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNKTIONEN -->
+  <section data-screen-label="Funktionen" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px);background:var(--surface-card);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:720px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-600)">{{ t.featEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.featTitle }}</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,56px);align-items:start">
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+            <button onClick="{{ f.select }}" style="display:flex;flex-direction:column;gap:6px;text-align:left;padding:16px 18px;background:{{ f.bg }};border:none;border-left:2px solid {{ f.accent }};cursor:pointer;font-family:var(--font-sans);transition:background 120ms var(--ease-standard)" style-hover="background:var(--surface-hover)">
+              <span style="font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-0.015em;color:var(--text-primary)">{{ f.title }}</span>
+              <span style="font-size:13px;line-height:1.5;color:var(--text-secondary)">{{ f.sub }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="background:var(--surface-page);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);overflow:hidden;position:sticky;top:92px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--border-subtle);background:var(--surface-card)">
+            <span style="font-size:13px;font-weight:600">{{ activeFeatureTitle }}</span>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">Vertt OS</span>
+          </div>
+          <div style="padding:20px;min-height:280px;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ activeMockRows }}" as="m" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);font-size:13px">
+                <span style="width:8px;height:8px;border-radius:50%;background:{{ m.dot }};flex-shrink:0"></span>
+                <span style="flex:1;font-weight:500">{{ m.label }}</span>
+                <span style="font-variant-numeric:tabular-nums;color:var(--text-secondary)">{{ m.value }}</span>
+              </div>
+            </sc-for>
+            <p style="margin:6px 2px 0;font-size:13px;line-height:1.55;color:var(--text-tertiary)">{{ activeFeatureNote }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM VERTT -->
+  <section data-screen-label="Warum Vertt" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12;max-width:22ch">{{ t.whyTitle }}</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+        <sc-for list="{{ whyItems }}" as="w" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:28px;background:#0A0A0A;color:#FFFFFF;border-radius:var(--radius-lg)">
+            <span style="font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.02em">{{ w.title }}</span>
+            <span style="font-size:14px;line-height:1.6;color:rgba(255,255,255,0.66)">{{ w.sub }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section data-screen-label="Partner" style="padding:0 clamp(20px,5vw,64px) clamp(64px,9vw,110px)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.partnerEyebrow }}</span>
+        <h3 style="margin:0;font-family:var(--font-display);font-size:clamp(22px,2.6vw,30px);font-weight:700;letter-spacing:-0.02em">{{ t.partnerTitle }}</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+        <sc-for list="{{ partnerSlots }}" as="p" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:110px;background:var(--surface-card);border:1px dashed var(--border-default);border-radius:var(--radius-lg)">
+            <span style="font-size:13px;font-weight:600;color:var(--text-tertiary)">{{ p.label }}</span>
+            <span style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--neutral-400)">{{ t.logoPlaceholder }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section data-screen-label="Testimonials" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px);background:var(--surface-card);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12;max-width:22ch">{{ t.testiTitle }}</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+        <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="3">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:18px;padding:28px;background:var(--surface-page);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+            <span style="align-self:flex-start;display:inline-flex;padding:3px 10px;border-radius:var(--radius-pill);background:var(--surface-sunken);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.placeholderTag }}</span>
+            <blockquote style="margin:0;font-family:var(--font-display);font-size:18px;font-weight:500;letter-spacing:-0.01em;line-height:1.45">«{{ q.quote }}»</blockquote>
+            <figcaption style="display:flex;flex-direction:column;gap:2px;font-size:13px">
+              <span style="font-weight:600">{{ q.name }}</span>
+              <span style="color:var(--text-tertiary)">{{ q.role }}</span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD FORM -->
+  <section id="kontakt" data-screen-label="Lead-Formular" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-600)">{{ t.leadEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.leadTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:var(--text-secondary);max-width:52ch">{{ t.leadText }}</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px;font-size:14px;color:var(--text-secondary)">
+          <a href="mailto:hello@vertt.ch" style="display:inline-flex;align-items:center;gap:9px" style-hover="color:var(--red-600)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+            hello@vertt.ch
+          </a>
+          <span style="display:inline-flex;align-items:center;gap:9px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            {{ t.leadLocation }}
+          </span>
+        </div>
+      </div>
+
+      <div style="background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-md);padding:clamp(22px,3vw,32px)">
+        <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:40px 16px;text-align:center">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--green-50);color:var(--green-600)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <div style="font-family:var(--font-display);font-size:24px;font-weight:700;letter-spacing:-0.015em">{{ t.thanks }}</div>
+            <p style="margin:0;font-size:14px;color:var(--text-secondary)">{{ t.thanksSub }}</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:10px">
+              <a href="index.html" style="display:inline-flex;align-items:center;height:40px;padding:0 18px;border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:14px;font-weight:600" style-hover="background:var(--surface-hover);color:var(--text-primary)">{{ t.thanksHome }}</a>
+              <a href="investor-relations.html" style="display:inline-flex;align-items:center;height:40px;padding:0 18px;border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:14px;font-weight:600" style-hover="background:var(--surface-hover);color:var(--text-primary)">Investor Relations</a>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitForm }}" style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fFirst }}" required="{{ true }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fLast }}" required="{{ true }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fCompany }}" required="{{ true }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fRole }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fEmail }}" type="email" required="{{ true }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fPhone }}" type="tel" hint-size="100%,66px"></x-import>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label style="font-size:13px;font-weight:500;color:var(--text-secondary)">{{ t.fMessage }}</label>
+              <textarea rows="4" style="resize:vertical;padding:10px 12px;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);font-family:var(--font-sans);font-size:14px;color:var(--text-primary);outline:none" style-focus="border-color:var(--swiss-red);box-shadow:var(--focus-ring)"></textarea>
+            </div>
+            <p style="margin:0;font-size:12px;line-height:1.55;color:var(--text-tertiary)">{{ t.fPrivacy }}</p>
+            <button type="submit" style="align-self:flex-start;display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 28px;background:var(--swiss-red);color:#FFFFFF;border:none;cursor:pointer;font-family:var(--font-sans);font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600)">
+              {{ t.fSubmit }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section data-screen-label="Closing CTA" style="background:#0A0A0A url('assets/img/bg-red-glow.png') no-repeat right -20% center / 55% auto;color:#FFFFFF;padding:clamp(56px,8vw,96px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+      <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(26px,3.4vw,42px);font-weight:700;letter-spacing:-0.02em;max-width:22ch">{{ t.closeTitle }}</h2>
+      <a href="#kontakt" style="display:inline-flex;align-items:center;height:48px;padding:0 28px;background:var(--swiss-red);color:#FFFFFF;font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600);color:#FFFFFF">{{ t.closeCta }}</a>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" lang="{{ curLang }}" style="display:block" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;de&quot;, &quot;en&quot;], &quot;default&quot;: &quot;de&quot;, &quot;tsType&quot;: &quot;'de'|'en'&quot;, &quot;section&quot;: &quot;Sprache&quot;}}">
+class Component extends DCLogic {
+  state = { formSent: false, feature: 0 };
+
+  getLang() {
+    try { return this.props.lang || localStorage.getItem('vertt-lang') || 'de'; } catch (e) { return 'de'; }
+  }
+
+  renderVals() {
+    const lang = this.getLang();
+    const de = {
+      eyebrow: 'B2B Portal',
+      heroTitle: 'Mobilität für Unternehmen. Einfach steuerbar. Voll integriert.',
+      heroSub: 'Vertt bietet Unternehmen eine zentrale Plattform für Buchung, Mobilitätsmanagement, Reporting, Abrechnung und Servicequalität.',
+      ctaConsult: 'Beratung anfragen', ctaDemo: 'Demo vereinbaren',
+      heroPoints: ['Ein Vertrag, eine Rechnung', 'Lizenzierte Operatoren', 'SLA-gesteuerte Qualität'],
+      mockTitle: 'Vertt B2B Portal', mockStat1: 'Fahrten / Monat', mockStat2: 'Kosten / Monat', mockStat3: 'Aktive Nutzer',
+      mockTableTitle: 'Aktuelle Fahrten', mockViewAll: 'Alle anzeigen',
+      mockRows: [
+        { id: 'VT-4821', route: 'Zürich HB → Hauptsitz', cost: 'CHF 38.00', status: 'live', statusLabel: 'Unterwegs' },
+        { id: 'VT-4820', route: 'Flughafen → Hotel Baur au Lac', cost: 'CHF 64.00', status: 'scheduled', statusLabel: 'Geplant' },
+        { id: 'VT-4819', route: 'Klinik Hirslanden → Zuhause', cost: 'CHF 42.50', status: 'completed', statusLabel: 'Abgeschlossen' },
+        { id: 'VT-4818', route: 'Hauptsitz → Messe Basel', cost: 'CHF 128.00', status: 'completed', statusLabel: 'Abgeschlossen' },
+      ],
+      audEyebrow: 'Zielgruppen', audTitle: 'Für Organisationen mit professionellem Mobilitätsbedarf',
+      audiences: [
+        { title: 'Unternehmen', sub: 'Geschäftsfahrten zentral buchen und abrechnen' },
+        { title: 'Hotels', sub: 'Gästetransfers als Teil des Serviceerlebnisses' },
+        { title: 'Kliniken & Spitäler', sub: 'Zuverlässige Patienten- und Personalfahrten' },
+        { title: 'Versicherungen', sub: 'Mobilität in Schaden- und Serviceprozessen' },
+        { title: 'Banken', sub: 'Diskrete, planbare Mobilität für Kunden und Kader' },
+        { title: 'Öffentliche Institutionen', sub: 'Compliance-konforme Beschaffung von Mobilität' },
+        { title: 'Corporate Travel Teams', sub: 'Bodenmobilität im Reiseprozess integriert' },
+        { title: 'Event & Hospitality', sub: 'Transfers für Gäste, Gruppen und Anlässe' },
+      ],
+      featEyebrow: 'Funktionen', featTitle: 'Das Wichtigste, zentral gesteuert',
+      features: [
+        { title: 'Zentrale Buchungsplattform', sub: 'Fahrten einfach planen, buchen und verwalten.', note: 'Buchung per Portal, App oder API – für Einzelfahrten, Serien und Gäste.', rows: [
+          { label: 'Zürich HB → Hauptsitz', value: '08:15', dot: 'var(--swiss-red)' },
+          { label: 'Flughafen → Hotel', value: '10:40', dot: 'var(--blue-500)' },
+          { label: 'Serienfahrt · Mo–Fr', value: '07:30', dot: 'var(--neutral-400)' },
+          { label: 'Gastbuchung · Event Basel', value: '18:00', dot: 'var(--neutral-400)' } ] },
+        { title: 'Mobilitätsmanagement', sub: 'Transparenz über Fahrten, Kosten, Nutzer und Prozesse.', note: 'Alle Fahrten, Nutzer und Richtlinien in einer Übersicht.', rows: [
+          { label: 'Aktive Fahrten', value: '9', dot: 'var(--green-500)' },
+          { label: 'Nutzer mit Buchungsrecht', value: '214', dot: 'var(--neutral-400)' },
+          { label: 'Richtlinien aktiv', value: '5', dot: 'var(--blue-500)' },
+          { label: 'Offene Freigaben', value: '2', dot: 'var(--amber-500)' } ] },
+        { title: 'Corporate Billing', sub: 'Zentrale Abrechnung, Kostenstellen und Zahlungsmodelle.', note: 'Eine Sammelrechnung pro Monat, nach Kostenstellen gegliedert.', rows: [
+          { label: 'Kostenstelle 4010 · Vertrieb', value: 'CHF 12’480', dot: 'var(--neutral-400)' },
+          { label: 'Kostenstelle 2200 · HR', value: 'CHF 3’920', dot: 'var(--neutral-400)' },
+          { label: 'Kostenstelle 1100 · GL', value: 'CHF 8’140', dot: 'var(--neutral-400)' },
+          { label: 'Sammelrechnung März', value: 'Bereit', dot: 'var(--green-500)' } ] },
+        { title: 'Reporting & Analytics', sub: 'Auswertungen, Reisemuster, Kostenkontrolle, Qualität.', note: 'Exportierbare Auswertungen für Controlling und Einkauf.', rows: [
+          { label: 'Kosten pro Fahrt Ø', value: 'CHF 41.20', dot: 'var(--neutral-400)' },
+          { label: 'Pünktlichkeit', value: '98.6 %', dot: 'var(--green-500)' },
+          { label: 'Top-Strecke', value: 'HB → HQ', dot: 'var(--blue-500)' },
+          { label: 'CO₂-Report Q1', value: 'Bereit', dot: 'var(--green-500)' } ] },
+        { title: 'API & Systemintegration', sub: 'Anbindung an bestehende Systeme und Plattformen.', note: 'REST-APIs für Buchung, Status und Abrechnung – inklusive Webhooks.', rows: [
+          { label: 'POST /v1/bookings', value: '201', dot: 'var(--green-500)' },
+          { label: 'GET /v1/trips/live', value: '200', dot: 'var(--green-500)' },
+          { label: 'Webhook · trip.completed', value: 'Aktiv', dot: 'var(--green-500)' },
+          { label: 'HRS · Hotelsoftware', value: 'Verbunden', dot: 'var(--blue-500)' } ] },
+        { title: 'Multimodale Optionen', sub: 'Taxi, Ride-Hailing, ÖV und weitere Angebote verbinden.', note: 'Die Reise als Ganzes – vom ersten bis zum letzten Kilometer.', rows: [
+          { label: 'Zuhause → Bahnhof', value: 'Vertt', dot: 'var(--swiss-red)' },
+          { label: 'Bahnhof → Zielstadt', value: 'Bahn', dot: 'var(--blue-500)' },
+          { label: 'Bahnhof → Termin', value: 'Vertt', dot: 'var(--swiss-red)' },
+          { label: 'Gesamtreise', value: '2h 10min', dot: 'var(--neutral-400)' } ] },
+      ],
+      whyTitle: 'Mobilität als Teil Ihrer Unternehmensinfrastruktur',
+      whyItems: [
+        { title: 'Weniger Komplexität', sub: 'Ein Vertragspartner, eine Plattform, eine Rechnung – statt fragmentierter Einzellösungen.' },
+        { title: 'Mehr Transparenz', sub: 'Fahrten, Kosten und Servicequalität jederzeit nachvollziehbar – pro Nutzer, Team und Kostenstelle.' },
+        { title: 'Bessere Mobilitätserlebnisse', sub: 'Zuverlässige, professionelle Fahrten für Mitarbeitende, Gäste und Patienten.' },
+      ],
+      partnerEyebrow: 'Ökosystem', partnerTitle: 'Entwickelt für vernetzte Mobilität', logoPlaceholder: 'Logo folgt',
+      partnerSlots: [ { label: 'Technologiepartner' }, { label: 'Mobilitätspartner' }, { label: 'Integrationspartner' }, { label: 'Unternehmenspartner' } ],
+      testiTitle: 'Was professionelle Mobilität möglich macht', placeholderTag: 'Platzhalter',
+      testimonials: [
+        { quote: 'Mit Vertt erhalten wir eine zentrale Lösung für Buchung, Transparenz und professionelle Mobilitätsprozesse.', name: 'Name folgt', role: 'Leitung Einkauf · Unternehmen' },
+        { quote: 'Unsere Gästetransfers laufen heute über eine Plattform – planbar, dokumentiert und in gleichbleibender Qualität.', name: 'Name folgt', role: 'General Manager · Hotel' },
+        { quote: 'Für Patientenfahrten zählt Verlässlichkeit. Vertt gibt uns die Kontrolle, die wir dafür brauchen.', name: 'Name folgt', role: 'Leitung Betrieb · Klinik' },
+      ],
+      leadEyebrow: 'Kontakt', leadTitle: 'Mobilität neu organisieren',
+      leadText: 'Erfahren Sie, wie Vertt Ihr Unternehmen bei Buchung, Mobilitätssteuerung und Reporting unterstützen kann.',
+      leadLocation: 'Zürich, Schweiz',
+      fFirst: 'Vorname', fLast: 'Nachname', fCompany: 'Unternehmen', fRole: 'Funktion', fEmail: 'E-Mail', fPhone: 'Telefonnummer', fMessage: 'Nachricht',
+      fPrivacy: 'Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung Ihrer Anfrage zu. Details in der Datenschutzerklärung.',
+      fSubmit: 'Gespräch vereinbaren',
+      thanks: 'Vielen Dank für Ihre Anfrage.', thanksSub: 'Unser Team meldet sich zeitnah bei Ihnen.', thanksHome: 'Zur Startseite',
+      closeTitle: 'Sehen Sie das Vertt B2B Portal im Einsatz.', closeCta: 'B2B Demo anfragen',
+    };
+    const en = {
+      eyebrow: 'B2B Portal',
+      heroTitle: 'Mobility for businesses. Simple to manage. Fully integrated.',
+      heroSub: 'Vertt gives organisations one central platform for booking, mobility management, reporting, billing and service quality.',
+      ctaConsult: 'Request a consultation', ctaDemo: 'Book a demo',
+      heroPoints: ['One contract, one invoice', 'Licensed operators', 'SLA-driven quality'],
+      mockTitle: 'Vertt B2B Portal', mockStat1: 'Trips / month', mockStat2: 'Spend / month', mockStat3: 'Active users',
+      mockTableTitle: 'Recent trips', mockViewAll: 'View all',
+      mockRows: [
+        { id: 'VT-4821', route: 'Zurich HB → Headquarters', cost: 'CHF 38.00', status: 'live', statusLabel: 'En route' },
+        { id: 'VT-4820', route: 'Airport → Hotel Baur au Lac', cost: 'CHF 64.00', status: 'scheduled', statusLabel: 'Scheduled' },
+        { id: 'VT-4819', route: 'Hirslanden Clinic → Home', cost: 'CHF 42.50', status: 'completed', statusLabel: 'Completed' },
+        { id: 'VT-4818', route: 'Headquarters → Messe Basel', cost: 'CHF 128.00', status: 'completed', statusLabel: 'Completed' },
+      ],
+      audEyebrow: 'Who it serves', audTitle: 'For organisations with professional mobility needs',
+      audiences: [
+        { title: 'Businesses', sub: 'Book and settle business travel centrally' },
+        { title: 'Hotels', sub: 'Guest transfers as part of the service experience' },
+        { title: 'Clinics & hospitals', sub: 'Reliable patient and staff transport' },
+        { title: 'Insurers', sub: 'Mobility within claims and service processes' },
+        { title: 'Banks', sub: 'Discreet, dependable mobility for clients and executives' },
+        { title: 'Public institutions', sub: 'Compliant procurement of mobility services' },
+        { title: 'Corporate travel teams', sub: 'Ground mobility integrated into travel workflows' },
+        { title: 'Events & hospitality', sub: 'Transfers for guests, groups and occasions' },
+      ],
+      featEyebrow: 'Capabilities', featTitle: 'The essentials, centrally managed',
+      features: [
+        { title: 'Central booking platform', sub: 'Plan, book and manage rides with ease.', note: 'Book via portal, app or API — single rides, series and guest bookings.', rows: [
+          { label: 'Zurich HB → Headquarters', value: '08:15', dot: 'var(--swiss-red)' },
+          { label: 'Airport → Hotel', value: '10:40', dot: 'var(--blue-500)' },
+          { label: 'Recurring ride · Mon–Fri', value: '07:30', dot: 'var(--neutral-400)' },
+          { label: 'Guest booking · Basel event', value: '18:00', dot: 'var(--neutral-400)' } ] },
+        { title: 'Mobility management', sub: 'Full visibility over trips, costs, users and processes.', note: 'All trips, users and policies in one overview.', rows: [
+          { label: 'Active trips', value: '9', dot: 'var(--green-500)' },
+          { label: 'Users with booking rights', value: '214', dot: 'var(--neutral-400)' },
+          { label: 'Active policies', value: '5', dot: 'var(--blue-500)' },
+          { label: 'Pending approvals', value: '2', dot: 'var(--amber-500)' } ] },
+        { title: 'Corporate billing', sub: 'Central invoicing, cost centres and payment models.', note: 'One consolidated invoice per month, structured by cost centre.', rows: [
+          { label: 'Cost centre 4010 · Sales', value: 'CHF 12,480', dot: 'var(--neutral-400)' },
+          { label: 'Cost centre 2200 · HR', value: 'CHF 3,920', dot: 'var(--neutral-400)' },
+          { label: 'Cost centre 1100 · Exec', value: 'CHF 8,140', dot: 'var(--neutral-400)' },
+          { label: 'March invoice', value: 'Ready', dot: 'var(--green-500)' } ] },
+        { title: 'Reporting & analytics', sub: 'Insights, travel patterns, cost control and quality.', note: 'Exportable reports for controlling and procurement.', rows: [
+          { label: 'Avg. cost per trip', value: 'CHF 41.20', dot: 'var(--neutral-400)' },
+          { label: 'On-time performance', value: '98.6 %', dot: 'var(--green-500)' },
+          { label: 'Top route', value: 'HB → HQ', dot: 'var(--blue-500)' },
+          { label: 'CO₂ report Q1', value: 'Ready', dot: 'var(--green-500)' } ] },
+        { title: 'API & system integration', sub: 'Connect existing systems, workflows and platforms.', note: 'REST APIs for booking, status and billing — including webhooks.', rows: [
+          { label: 'POST /v1/bookings', value: '201', dot: 'var(--green-500)' },
+          { label: 'GET /v1/trips/live', value: '200', dot: 'var(--green-500)' },
+          { label: 'Webhook · trip.completed', value: 'Active', dot: 'var(--green-500)' },
+          { label: 'HRS · hotel software', value: 'Connected', dot: 'var(--blue-500)' } ] },
+        { title: 'Multimodal options', sub: 'Connect taxi, ride-hailing, public transport and more.', note: 'The journey as a whole — from first to last kilometre.', rows: [
+          { label: 'Home → Station', value: 'Vertt', dot: 'var(--swiss-red)' },
+          { label: 'Station → Destination city', value: 'Rail', dot: 'var(--blue-500)' },
+          { label: 'Station → Meeting', value: 'Vertt', dot: 'var(--swiss-red)' },
+          { label: 'Full journey', value: '2h 10min', dot: 'var(--neutral-400)' } ] },
+      ],
+      whyTitle: 'Mobility as part of your corporate infrastructure',
+      whyItems: [
+        { title: 'Less complexity', sub: 'One partner, one platform, one invoice — instead of fragmented point solutions.' },
+        { title: 'More transparency', sub: 'Trips, costs and service quality traceable at all times — per user, team and cost centre.' },
+        { title: 'Better mobility experiences', sub: 'Reliable, professional rides for employees, guests and patients.' },
+      ],
+      partnerEyebrow: 'Ecosystem', partnerTitle: 'Built for connected mobility', logoPlaceholder: 'Logo to follow',
+      partnerSlots: [ { label: 'Technology partner' }, { label: 'Mobility partner' }, { label: 'Integration partner' }, { label: 'Corporate partner' } ],
+      testiTitle: 'What professional mobility makes possible', placeholderTag: 'Placeholder',
+      testimonials: [
+        { quote: 'With Vertt we get one central solution for booking, transparency and professional mobility processes.', name: 'Name to follow', role: 'Head of Procurement · Enterprise' },
+        { quote: 'Our guest transfers now run on one platform — plannable, documented and consistently high quality.', name: 'Name to follow', role: 'General Manager · Hotel' },
+        { quote: 'For patient transport, reliability is everything. Vertt gives us the control we need.', name: 'Name to follow', role: 'Head of Operations · Clinic' },
+      ],
+      leadEyebrow: 'Contact', leadTitle: 'Reorganise your mobility',
+      leadText: 'Find out how Vertt can support your organisation with booking, mobility management and reporting.',
+      leadLocation: 'Zurich, Switzerland',
+      fFirst: 'First name', fLast: 'Last name', fCompany: 'Company', fRole: 'Role', fEmail: 'Email', fPhone: 'Phone', fMessage: 'Message',
+      fPrivacy: 'By submitting, you agree to the processing of your details to handle your request. See our privacy policy for details.',
+      fSubmit: 'Schedule a conversation',
+      thanks: 'Thank you for your request.', thanksSub: 'Our team will get back to you shortly.', thanksHome: 'Back to home',
+      closeTitle: 'See the Vertt B2B Portal in action.', closeCta: 'Request a B2B demo',
+    };
+    const t = lang === 'en' ? en : de;
+    const sel = this.state.feature;
+    const features = t.features.map((f, i) => ({
+      title: f.title, sub: f.sub,
+      bg: i === sel ? 'var(--surface-page)' : 'transparent',
+      accent: i === sel ? 'var(--swiss-red)' : 'var(--border-subtle)',
+      select: () => this.setState({ feature: i }),
+    }));
+    return {
+      t, curLang: lang,
+      heroPoints: t.heroPoints, mockRows: t.mockRows, audiences: t.audiences,
+      features,
+      activeFeatureTitle: t.features[sel].title,
+      activeFeatureNote: t.features[sel].note,
+      activeMockRows: t.features[sel].rows,
+      whyItems: t.whyItems, partnerSlots: t.partnerSlots, testimonials: t.testimonials,
+      formSent: this.state.formSent,
+      formOpen: !this.state.formSent,
+      submitForm: (e) => { e.preventDefault(); this.setState({ formSent: true }); },
+    };
+  }
+}
+</script>
 </body>
 </html>

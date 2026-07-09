@@ -1,22 +1,397 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vertt AG — Mobilität, die sich verbindet</title>
-<meta name="description" content="Vertt verbindet Unternehmen, Passagiere, Flotten und Mobilitätspartner über eine digitale Plattform für Buchung, Dispatch und professionelle Mobilität.">
-<link rel="icon" href="assets/logo/vertt-badge-on-black.png">
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/main.css">
+<script src="./support.js"></script>
 </head>
 <body>
-<site-header active="home"></site-header>
-<main id="app" data-screen-label="Startseite"></main>
-<site-footer></site-footer>
+<x-dc>
+<helmet>
+  <title>Vertt AG — Mobilität, die sich verbindet</title>
+  <meta name="description" content="Vertt verbindet Unternehmen, Passagiere, Flotten und Mobilitätspartner über eine digitale Plattform für Buchung, Dispatch und professionelle Mobilität.">
+  <link rel="icon" href="assets/logo/vertt-badge-on-black.png">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/styles.css">
+  <script src="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/_ds_bundle.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--red-600)}
+    input::placeholder{color:var(--neutral-400)}
+    @keyframes vx-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes vx-pulse-dot{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(2.6);opacity:0}}
+    @media (max-width:760px){[data-hide-mobile]{display:none !important}}
+  </style>
+</helmet>
 
-<script src="assets/js/i18n.js"></script>
-<script src="assets/js/site-header.js"></script>
-<script src="assets/js/site-footer.js"></script>
-<script src="assets/js/page-home.js"></script>
+<dc-import name="SiteHeader" active="home" lang="{{ curLang }}" style="position:sticky;top:0;z-index:300;display:block" hint-size="100%,68px"></dc-import>
+
+<main data-screen-label="Startseite">
+
+  <!-- HERO -->
+  <section data-screen-label="Hero" style="background:#0A0A0A url('assets/img/bg-red-glow.png') no-repeat right -10% top -20% / 70% auto;color:#FFFFFF;padding:clamp(72px,10vw,140px) clamp(20px,5vw,64px) clamp(150px,16vw,210px);position:relative;overflow:hidden">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:28px;animation:vx-rise 600ms var(--ease-standard) both">
+      <div style="display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6)">
+        <span style="position:relative;display:inline-flex;width:7px;height:7px"><span style="width:7px;height:7px;border-radius:50%;background:var(--swiss-red)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--swiss-red);animation:vx-pulse-dot 1.8s ease-out infinite"></span></span>
+        {{ t.heroEyebrow }}
+      </div>
+      <h1 style="margin: 0; font-family: var(--font-display); font-size: clamp(44px,7.4vw,88px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; max-width: 14ch; color: var(--pure-white)">{{ t.heroTitle }}</h1>
+      <p style="margin:0;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:rgba(255,255,255,0.72);max-width:62ch">{{ t.heroSub }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+        <a href="#buchen" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:var(--swiss-red);color:#FFFFFF;font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600);color:#FFFFFF">{{ t.ctaBook }}</a>
+        <a href="b2b-portal.html" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:#FFFFFF;color:#0A0A0A;font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--neutral-150);color:#0A0A0A">{{ t.ctaB2b }}</a>
+        <a href="ueber-uns.html" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:transparent;color:rgba(255,255,255,0.85);font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,0.28);border-radius:var(--radius-md);transition:border-color 120ms var(--ease-standard)" style-hover="border-color:rgba(255,255,255,0.7);color:#FFFFFF">{{ t.ctaMore }}</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);margin-top:clamp(20px,3vw,40px);padding-top:28px;border-top:1px solid rgba(255,255,255,0.14)">
+        <sc-for list="{{ heroFacts }}" as="fact" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);font-weight:700;letter-spacing:-0.015em;font-variant-numeric:tabular-nums">{{ fact.value }}</span>
+            <span style="font-size:13px;color:rgba(255,255,255,0.55)">{{ fact.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING WIDGET -->
+  <sc-if value="{{ showWidget }}" hint-placeholder-val="{{ true }}">
+  <section id="buchen" data-screen-label="Fahrt-Widget" style="padding:0 clamp(20px,5vw,64px);margin-top:calc(clamp(110px,13vw,160px) * -1);position:relative;z-index:5">
+    <div style="max-width:1360px;margin:0 auto;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);padding:clamp(20px,3vw,32px)">
+      <sc-if value="{{ widgetSent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:36px 20px;text-align:center">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--green-50);color:var(--green-600)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+          </span>
+          <div style="font-family:var(--font-display);font-size:24px;font-weight:700;letter-spacing:-0.015em">{{ t.wThanks }}</div>
+          <p style="margin:0;font-size:14px;color:var(--text-secondary);max-width:46ch">{{ t.wThanksSub }}</p>
+          <button onClick="{{ resetWidget }}" style="margin-top:8px;background:none;border:none;cursor:pointer;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--red-600);padding:4px" style-hover="color:var(--red-700)">{{ t.wReset }}</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ widgetOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+            <div style="display:inline-flex;background:var(--surface-sunken);border-radius:var(--radius-pill);padding:3px">
+              <button onClick="{{ setNow }}" style="height:34px;padding:0 18px;border:none;cursor:pointer;border-radius:var(--radius-pill);font-family:var(--font-sans);font-size:13px;font-weight:600;background:{{ nowBg }};color:{{ nowFg }};box-shadow:{{ nowShadow }};transition:background 120ms var(--ease-standard)">{{ t.wNow }}</button>
+              <button onClick="{{ setLater }}" style="height:34px;padding:0 18px;border:none;cursor:pointer;border-radius:var(--radius-pill);font-family:var(--font-sans);font-size:13px;font-weight:600;background:{{ laterBg }};color:{{ laterFg }};box-shadow:{{ laterShadow }};transition:background 120ms var(--ease-standard)">{{ t.wLater }}</button>
+            </div>
+            <span style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.wNote }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;align-items:end">
+            <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.wPickup }}" placeholder="{{ t.wPickupPh }}" size="lg" hint-size="100%,70px"></x-import>
+            <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.wDrop }}" placeholder="{{ t.wDropPh }}" size="lg" hint-size="100%,70px"></x-import>
+            <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.wDate }}" type="date" size="lg" hint-size="100%,70px"></x-import>
+            <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.wTime }}" type="time" size="lg" hint-size="100%,70px"></x-import>
+            <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Select" label="{{ t.wPax }}" options="{{ paxOptions }}" default-value="{{ paxDefault }}" size="lg" hint-size="100%,70px"></x-import>
+            <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Select" label="{{ t.wCat }}" options="{{ catOptions }}" default-value="{{ catDefault }}" size="lg" hint-size="100%,70px"></x-import>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+            <span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-tertiary)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+              {{ t.wCompliance }}
+            </span>
+            <button onClick="{{ submitWidget }}" style="display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 30px;background:var(--swiss-red);color:#FFFFFF;border:none;cursor:pointer;font-family:var(--font-sans);font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600)">
+              {{ t.wSubmit }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- VERTT OS -->
+  <section data-screen-label="Vertt OS" style="padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px) clamp(56px,8vw,100px)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:760px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-600)">Vertt OS</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(30px,4.2vw,52px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.osTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:var(--text-secondary);max-width:62ch">{{ t.osText }}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(10px,2vw,18px);align-items:center">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ osLeft }}" as="node" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:0">
+              <span style="flex:1;display:inline-flex;align-items:center;justify-content:center;padding:11px 8px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);font-size:clamp(12px,1.2vw,14px);font-weight:500;text-align:center;box-shadow:var(--shadow-xs)">{{ node }}</span>
+              <span data-hide-mobile="true" style="width:clamp(12px,3vw,40px);height:1px;background:var(--border-default);flex-shrink:0"></span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:clamp(20px,3vw,36px)">
+          <img src="assets/logo/vertt-badge-on-black.png" alt="Vertt OS" style="width:clamp(84px,10vw,128px);height:auto;display:block;border-radius:24%;box-shadow:var(--shadow-lg)">
+          <span style="font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:-0.015em">Vertt OS</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ osRight }}" as="node" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:0">
+              <span data-hide-mobile="true" style="width:clamp(12px,3vw,40px);height:1px;background:var(--border-default);flex-shrink:0"></span>
+              <span style="flex:1;display:inline-flex;align-items:center;justify-content:center;padding:11px 8px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);font-size:clamp(12px,1.2vw,14px);font-weight:500;text-align:center;box-shadow:var(--shadow-xs)">{{ node }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B TEASER -->
+  <section data-screen-label="B2B Teaser" style="padding:clamp(40px,6vw,80px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,72px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.b2bEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.4vw,42px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.b2bTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:var(--text-secondary);max-width:54ch">{{ t.b2bText }}</p>
+        <a href="b2b-portal.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 24px;background:var(--action-primary-bg);color:#FFFFFF;font-size:15px;font-weight:600;border-radius:var(--radius-md);margin-top:6px;transition:background 120ms var(--ease-standard)" style-hover="background:var(--action-primary-bg-hover);color:#FFFFFF">
+          {{ t.b2bCta }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+      <div style="background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border-subtle)">
+          <span style="font-size:13px;font-weight:600">{{ t.b2bMockTitle }}</span>
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">Vertt OS</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;padding:16px 20px 6px;--text-4xl:26px">
+          <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatCard" label="{{ t.b2bStat1 }}" value="412" delta="+8%" delta-direction="up" hint-size="100%,110px"></x-import>
+          <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatCard" label="{{ t.b2bStat2 }}" value="18’240" unit="CHF" hint-size="100%,110px"></x-import>
+          <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatCard" label="{{ t.b2bStat3 }}" value="98.6" unit="%" delta="+0.4" delta-direction="up" hint-size="100%,110px"></x-import>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:8px 20px 18px">
+          <sc-for list="{{ b2bRows }}" as="row" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border-subtle);font-size:13px">
+              <span style="font-weight:600;font-variant-numeric:tabular-nums;color:var(--text-secondary)">{{ row.id }}</span>
+              <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ row.route }}</span>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.StatusPill" status="{{ row.status }}" size="sm" hint-size="70px,18px">{{ row.statusLabel }}</x-import>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPERATOR TEASER -->
+  <section data-screen-label="Operator Teaser" style="padding:clamp(40px,6vw,80px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,72px);align-items:center">
+      <div style="background:#16181B;border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);overflow:hidden;order:1">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.12)">
+          <span style="font-size:13px;font-weight:600;color:#FFFFFF">{{ t.opsMockTitle }}</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-500)">
+            <span style="position:relative;display:inline-flex;width:6px;height:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--green-500)"></span><span style="position:absolute;inset:0;border-radius:50%;background:var(--green-500);animation:vx-pulse-dot 1.8s ease-out infinite"></span></span>
+            Live
+          </span>
+        </div>
+        <div style="position:relative;height:230px;background:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px),#111316;background-size:34px 34px">
+          <svg viewBox="0 0 400 230" style="position:absolute;inset:0;width:100%;height:100%" preserveAspectRatio="none">
+            <path d="M40 190 L120 150 L150 90 L250 70 L330 40" fill="none" stroke="#DA291C" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 0"></path>
+            <circle cx="40" cy="190" r="5" fill="#FFFFFF"></circle>
+            <circle cx="330" cy="40" r="5" fill="#DA291C"></circle>
+            <circle cx="205" cy="140" r="4" fill="#1F8A5B"></circle>
+            <circle cx="110" cy="60" r="4" fill="#1F8A5B"></circle>
+            <circle cx="300" cy="170" r="4" fill="#C77A08"></circle>
+          </svg>
+          <div style="position:absolute;left:14px;bottom:14px;display:flex;flex-direction:column;gap:6px;background:rgba(10,10,10,0.85);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-md);padding:10px 14px">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5)">{{ t.opsMockTrip }}</span>
+            <span style="font-size:13px;font-weight:600;color:#FFFFFF;font-variant-numeric:tabular-nums">VT-4821 · Zürich HB → {{ t.opsMockDest }}</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(14px,3vw,32px);padding:14px 20px;border-top:1px solid rgba(255,255,255,0.12)">
+          <sc-for list="{{ opsStats }}" as="s" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font-family:var(--font-display);font-size:20px;font-weight:700;color:#FFFFFF;font-variant-numeric:tabular-nums">{{ s.value }}</span>
+              <span style="font-size:11px;color:rgba(255,255,255,0.5)">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;order:2">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.opsEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.4vw,42px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.opsTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:var(--text-secondary);max-width:54ch">{{ t.opsText }}</p>
+        <a href="taxi-operatoren-portal.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 24px;background:var(--action-primary-bg);color:#FFFFFF;font-size:15px;font-weight:600;border-radius:var(--radius-md);margin-top:6px;transition:background 120ms var(--ease-standard)" style-hover="background:var(--action-primary-bg-hover);color:#FFFFFF">
+          {{ t.opsCta }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MULTIMODAL -->
+  <section data-screen-label="Multimodal" style="padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);background:var(--surface-card);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:760px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-600)">{{ t.mmEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(30px,4.2vw,52px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.mmTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:var(--text-secondary);max-width:62ch">{{ t.mmText }}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;align-items:stretch">
+        <sc-for list="{{ journey }}" as="step" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:22px clamp(14px,2vw,24px);border-left:1px solid var(--border-subtle);position:relative">
+            <span style="position:absolute;left:-5px;top:28px;width:9px;height:9px;border-radius:50%;background:{{ step.dot }};border:2px solid var(--surface-card)"></span>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);font-variant-numeric:tabular-nums">{{ step.num }}</span>
+            <span style="font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:-0.015em">{{ step.title }}</span>
+            <span style="font-size:13px;line-height:1.5;color:var(--text-secondary)">{{ step.sub }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ mmChips }}" as="chip" hint-placeholder-count="9">
+          <span style="display:inline-flex;align-items:center;padding:8px 14px;border:1px solid var(--border-subtle);border-radius:var(--radius-pill);font-size:13px;font-weight:500;color:var(--text-secondary);background:var(--surface-page)">{{ chip }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section data-screen-label="Closing CTA" style="background: #0A0A0A url('assets/img/bg-red-glow.png') no-repeat left -20% bottom -40% / 60% auto; color: #FFFFFF; padding: clamp(72px,10vw,130px) clamp(20px,5vw,64px); text-align: right">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px">
+      <h2 style="margin: 0; font-family: var(--font-display); font-size: clamp(32px,4.6vw,58px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.08; max-width: 20ch; color: var(--pure-white)">{{ t.closeTitle }}</h2>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <a href="ueber-uns.html#kontakt" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:var(--swiss-red);color:#FFFFFF;font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600);color:#FFFFFF">{{ t.closeContact }}</a>
+        <a href="b2b-portal.html" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:#FFFFFF;color:#0A0A0A;font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--neutral-150);color:#0A0A0A">{{ t.closeB2b }}</a>
+        <a href="#buchen" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:transparent;color:rgba(255,255,255,0.85);font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,0.28);border-radius:var(--radius-md);transition:border-color 120ms var(--ease-standard)" style-hover="border-color:rgba(255,255,255,0.7);color:#FFFFFF">{{ t.ctaBook }}</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" lang="{{ curLang }}" style="display:block" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWidget&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Startseite&quot;}, &quot;lang&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;de&quot;, &quot;en&quot;], &quot;default&quot;: &quot;de&quot;, &quot;tsType&quot;: &quot;'de'|'en'&quot;, &quot;section&quot;: &quot;Sprache&quot;}}">
+class Component extends DCLogic {
+  state = { widgetSent: false, mode: 'now' };
+
+  getLang() {
+    try { return this.props.lang || localStorage.getItem('vertt-lang') || 'de'; } catch (e) { return 'de'; }
+  }
+
+  renderVals() {
+    const lang = this.getLang();
+    const de = {
+      heroEyebrow: 'Schweizer Mobilitätsplattform',
+      heroTitle: 'Mobilität, die sich verbindet.',
+      heroSub: 'Vertt verbindet Unternehmen, Passagiere, Flotten und Mobilitätspartner über eine digitale Plattform für Buchung, Dispatch, multimodale Reisen und professionelle Mobilität.',
+      ctaBook: 'Fahrt buchen', ctaB2b: 'Vertt für Ihr Unternehmen', ctaMore: 'Mehr über Vertt erfahren',
+      heroFacts: [
+        { value: 'B2B & B2B2C', label: 'Plattformmodell für professionelle Mobilität' },
+        { value: '1 Plattform', label: 'Buchung, Dispatch, Flotte, Reporting, APIs' },
+        { value: 'CH · DACH · EU', label: 'Skalierbar über Märkte und Partner' },
+      ],
+      wNow: 'Sofortfahrt', wLater: 'Vorausbuchung', wNote: 'Schnell. Transparent. Professionell.',
+      wPickup: 'Abholort', wPickupPh: 'Bahnhofstrasse 1, Zürich', wDrop: 'Zielort', wDropPh: 'Flughafen Zürich',
+      wDate: 'Datum', wTime: 'Uhrzeit', wPax: 'Personen', wCat: 'Kategorie',
+      pax: ['1 Person', '2 Personen', '3 Personen', '4+ Personen'], paxDefault: '2 Personen',
+      cat: ['Standard', 'Business', 'Van', 'Barrierefrei'], catDefault: 'Business',
+      wCompliance: 'Lizenzierte Operatoren. Transparente Preise.',
+      wSubmit: 'Fahrt suchen',
+      wThanks: 'Vielen Dank für Ihre Anfrage.', wThanksSub: 'Unser Team meldet sich zeitnah bei Ihnen und bestätigt Ihre Fahrt.', wReset: 'Neue Anfrage starten',
+      osTitle: 'Das Betriebssystem für professionelle Mobilität.',
+      osText: 'Vertt verbindet Buchung, Dispatch, Flottensteuerung, Reporting, APIs und Zahlungsabwicklung in einer digitalen Plattform – für Unternehmen, Operatoren, Fahrer und Passagiere.',
+      osLeft: ['Unternehmen', 'Hotels', 'Kliniken', 'Taxi-Operatoren', 'Fahrer'],
+      osRight: ['Passagiere', 'Öffentliche Mobilität', 'APIs', 'Payment', 'Reporting'],
+      b2bEyebrow: 'Für Unternehmen', b2bTitle: 'Mobilität für Unternehmen und Organisationen',
+      b2bText: 'Vertt unterstützt Unternehmen, Hotels, Kliniken, Versicherungen und institutionelle Kunden mit digitalen Lösungen für Buchung, Mobilitätssteuerung, Reporting und Abrechnung.',
+      b2bCta: 'B2B Portal entdecken', b2bMockTitle: 'Corporate Mobility Portal',
+      b2bStat1: 'Fahrten / Monat', b2bStat2: 'Kosten / Monat', b2bStat3: 'SLA erfüllt',
+      b2bRows: [
+        { id: 'VT-4821', route: 'Zürich HB → Hauptsitz', status: 'live', statusLabel: 'Unterwegs' },
+        { id: 'VT-4820', route: 'Flughafen → Hotel Baur au Lac', status: 'scheduled', statusLabel: 'Geplant' },
+        { id: 'VT-4818', route: 'Klinik Hirslanden → Zuhause', status: 'completed', statusLabel: 'Abgeschlossen' },
+      ],
+      opsEyebrow: 'Für Operatoren', opsTitle: 'Mehr Kontrolle für Taxi-Operatoren und Flotten',
+      opsText: 'Vertt unterstützt Taxi-Operatoren mit digitalen Tools für Dispatch, Auftragssteuerung, Fahrer, Flotten und neue B2B-Aufträge.',
+      opsCta: 'Taxi-Operatoren Portal entdecken', opsMockTitle: 'Live Dispatch', opsMockTrip: 'Aktive Fahrt', opsMockDest: 'Flughafen',
+      opsStats: [
+        { value: '24', label: 'Fahrzeuge online' },
+        { value: '9', label: 'Aktive Fahrten' },
+        { value: '4.2 Min', label: 'Ø Anfahrtszeit' },
+      ],
+      mmEyebrow: 'Multimodal', mmTitle: 'Alle Wege auf einer Plattform',
+      mmText: 'Vertt entwickelt Mobilität weiter: von der einzelnen Fahrt zur vernetzten, multimodalen Reise – über Verkehrsmittel, Anbieter und digitale Kanäle hinweg.',
+      journey: [
+        { num: '01', title: 'Zuhause', sub: 'Buchung per App, Portal oder API', dot: 'var(--neutral-400)' },
+        { num: '02', title: 'ÖV & Bahnhof', sub: 'Anschluss an die öffentliche Mobilität', dot: 'var(--blue-500)' },
+        { num: '03', title: 'Vertt Fahrzeug', sub: 'Lizenzierte Operatoren, live disponiert', dot: 'var(--swiss-red)' },
+        { num: '04', title: 'Ziel', sub: 'Hotel, Büro, Klinik oder Flughafen', dot: 'var(--green-500)' },
+      ],
+      mmChips: ['Taxi', 'Ride-Hailing', 'Öffentliche Mobilität', 'Corporate Mobility', 'Hotel Transfers', 'Klinikfahrten', 'API Integrationen', 'Zahlungsanbieter', 'Mobilitätsplattformen'],
+      closeTitle: 'Bereit für eine neue Art von Mobilität?',
+      closeContact: 'Kontakt aufnehmen', closeB2b: 'B2B Portal entdecken',
+    };
+    const en = {
+      heroEyebrow: 'Swiss mobility platform',
+      heroTitle: 'Mobility that connects.',
+      heroSub: 'Vertt connects businesses, passengers, fleets and mobility partners through one digital platform for booking, dispatch, multimodal journeys and professional mobility.',
+      ctaBook: 'Book a ride', ctaB2b: 'Vertt for your business', ctaMore: 'Learn more about Vertt',
+      heroFacts: [
+        { value: 'B2B & B2B2C', label: 'Platform model for professional mobility' },
+        { value: '1 platform', label: 'Booking, dispatch, fleet, reporting, APIs' },
+        { value: 'CH · DACH · EU', label: 'Built to scale across markets and partners' },
+      ],
+      wNow: 'Ride now', wLater: 'Pre-book', wNote: 'Fast. Transparent. Professional.',
+      wPickup: 'Pickup location', wPickupPh: 'Bahnhofstrasse 1, Zurich', wDrop: 'Destination', wDropPh: 'Zurich Airport',
+      wDate: 'Date', wTime: 'Time', wPax: 'Passengers', wCat: 'Category',
+      pax: ['1 passenger', '2 passengers', '3 passengers', '4+ passengers'], paxDefault: '2 passengers',
+      cat: ['Standard', 'Business', 'Van', 'Accessible'], catDefault: 'Business',
+      wCompliance: 'Licensed operators. Transparent pricing.',
+      wSubmit: 'Find a ride',
+      wThanks: 'Thank you for your request.', wThanksSub: 'Our team will get back to you shortly to confirm your ride.', wReset: 'Start a new request',
+      osTitle: 'The operating system for professional mobility.',
+      osText: 'Vertt brings booking, dispatch, fleet control, reporting, APIs and payments together on one digital platform — for businesses, operators, drivers and passengers.',
+      osLeft: ['Businesses', 'Hotels', 'Clinics', 'Taxi operators', 'Drivers'],
+      osRight: ['Passengers', 'Public transport', 'APIs', 'Payments', 'Reporting'],
+      b2bEyebrow: 'For businesses', b2bTitle: 'Mobility for businesses and organisations',
+      b2bText: 'Vertt supports companies, hotels, clinics, insurers and institutional clients with digital solutions for booking, mobility management, reporting and billing.',
+      b2bCta: 'Explore the B2B Portal', b2bMockTitle: 'Corporate mobility portal',
+      b2bStat1: 'Trips / month', b2bStat2: 'Spend / month', b2bStat3: 'SLA met',
+      b2bRows: [
+        { id: 'VT-4821', route: 'Zurich HB → Headquarters', status: 'live', statusLabel: 'En route' },
+        { id: 'VT-4820', route: 'Airport → Hotel Baur au Lac', status: 'scheduled', statusLabel: 'Scheduled' },
+        { id: 'VT-4818', route: 'Hirslanden Clinic → Home', status: 'completed', statusLabel: 'Completed' },
+      ],
+      opsEyebrow: 'For operators', opsTitle: 'More control for taxi operators and fleets',
+      opsText: 'Vertt supports taxi operators with digital tools for dispatch, order management, drivers, fleets and new B2B demand.',
+      opsCta: 'Explore the Operator Portal', opsMockTitle: 'Live dispatch', opsMockTrip: 'Active trip', opsMockDest: 'Airport',
+      opsStats: [
+        { value: '24', label: 'Vehicles online' },
+        { value: '9', label: 'Active trips' },
+        { value: '4.2 min', label: 'Avg. pickup time' },
+      ],
+      mmEyebrow: 'Multimodal', mmTitle: 'Every journey on one platform',
+      mmText: 'Vertt takes mobility further: from the single ride to the connected, multimodal journey — across modes, providers and digital channels.',
+      journey: [
+        { num: '01', title: 'Home', sub: 'Booked via app, portal or API', dot: 'var(--neutral-400)' },
+        { num: '02', title: 'Public transport', sub: 'Connected to rail and urban transit', dot: 'var(--blue-500)' },
+        { num: '03', title: 'Vertt vehicle', sub: 'Licensed operators, dispatched live', dot: 'var(--swiss-red)' },
+        { num: '04', title: 'Destination', sub: 'Hotel, office, clinic or airport', dot: 'var(--green-500)' },
+      ],
+      mmChips: ['Taxi', 'Ride-hailing', 'Public transport', 'Corporate mobility', 'Hotel transfers', 'Clinic transport', 'API integrations', 'Payment providers', 'Mobility platforms'],
+      closeTitle: 'Ready for a new kind of mobility?',
+      closeContact: 'Get in touch', closeB2b: 'Explore the B2B Portal',
+    };
+    const t = lang === 'en' ? en : de;
+    const isNow = this.state.mode === 'now';
+    return {
+      t, curLang: lang,
+      heroFacts: t.heroFacts, osLeft: t.osLeft, osRight: t.osRight,
+      b2bRows: t.b2bRows, opsStats: t.opsStats, journey: t.journey, mmChips: t.mmChips,
+      paxOptions: t.pax, paxDefault: t.paxDefault, catOptions: t.cat, catDefault: t.catDefault,
+      showWidget: this.props.showWidget ?? true,
+      widgetSent: this.state.widgetSent,
+      widgetOpen: !this.state.widgetSent,
+      submitWidget: () => this.setState({ widgetSent: true }),
+      resetWidget: () => this.setState({ widgetSent: false }),
+      setNow: () => this.setState({ mode: 'now' }),
+      setLater: () => this.setState({ mode: 'later' }),
+      nowBg: isNow ? 'var(--surface-card)' : 'transparent',
+      nowFg: isNow ? 'var(--text-primary)' : 'var(--text-tertiary)',
+      nowShadow: isNow ? 'var(--shadow-xs)' : 'none',
+      laterBg: isNow ? 'transparent' : 'var(--surface-card)',
+      laterFg: isNow ? 'var(--text-tertiary)' : 'var(--text-primary)',
+      laterShadow: isNow ? 'none' : 'var(--shadow-xs)',
+    };
+  }
+}
+</script>
 </body>
 </html>

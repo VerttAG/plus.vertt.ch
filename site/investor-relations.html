@@ -1,22 +1,328 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vertt AG — Investor Relations</title>
-<meta name="description" content="Vertt AG — Investor Relations.">
-<link rel="icon" href="assets/logo/vertt-badge-on-black.png">
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/main.css">
+<script src="./support.js"></script>
 </head>
 <body>
-<site-header active="ir"></site-header>
-<main id="app" data-stub="ir"></main>
-<site-footer></site-footer>
+<x-dc>
+<helmet>
+  <title>Investor Relations — Vertt AG</title>
+  <meta name="description" content="Beteiligung an einer Schweizer Mobility-Tech-Plattform für professionelle Mobilität, digitale Infrastruktur und multimodale Marktzugänge.">
+  <link rel="icon" href="assets/logo/vertt-badge-on-black.png">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/styles.css">
+  <script src="_ds/vertt-os-design-system-fffbe357-cd19-4432-ac19-caea6239f40c/_ds_bundle.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--red-600)}
+    input::placeholder,textarea::placeholder{color:var(--neutral-400)}
+    @keyframes vx-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @media (max-width:760px){[data-hide-mobile]{display:none !important}}
+  </style>
+</helmet>
 
-<script src="assets/js/i18n.js"></script>
-<script src="assets/js/site-header.js"></script>
-<script src="assets/js/site-footer.js"></script>
-<script src="assets/js/page-stub.js"></script>
+<dc-import name="SiteHeader" active="ir" lang="{{ curLang }}" style="position:sticky;top:0;z-index:300;display:block" hint-size="100%,68px"></dc-import>
+
+<main data-screen-label="Investor Relations">
+
+  <!-- HERO -->
+  <section data-screen-label="Hero" style="background:#0A0A0A;color:#FFFFFF;padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px);position:relative;overflow:hidden">
+    <svg viewBox="0 0 900 500" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.5">
+      <path d="M120 380 L260 300 L400 340 L540 240 L700 280 L820 180" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"></path>
+      <path d="M180 140 L320 200 L470 150 L620 210 L780 120" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"></path>
+      <path d="M260 300 L320 200 M540 240 L470 150 M700 280 L620 210" stroke="rgba(255,255,255,0.08)" stroke-width="1"></path>
+      <circle cx="260" cy="300" r="3" fill="#DA291C"></circle>
+      <circle cx="540" cy="240" r="3" fill="rgba(255,255,255,0.5)"></circle>
+      <circle cx="470" cy="150" r="3" fill="rgba(255,255,255,0.5)"></circle>
+      <circle cx="700" cy="280" r="3" fill="rgba(255,255,255,0.35)"></circle>
+      <circle cx="320" cy="200" r="3" fill="rgba(255,255,255,0.35)"></circle>
+      <circle cx="820" cy="180" r="3" fill="#DA291C"></circle>
+    </svg>
+    <div style="max-width:1360px;margin:0 auto;position:relative;display:flex;flex-direction:column;gap:22px;animation:vx-rise 600ms var(--ease-standard) both">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.55)">Investor Relations</span>
+      <h1 style="margin:0;font-family:var(--font-display);font-size:clamp(34px,4.8vw,60px);font-weight:800;letter-spacing:-0.025em;line-height:1.08;max-width:20ch">{{ t.heroTitle }}</h1>
+      <p style="margin:0;font-size:clamp(15px,1.5vw,17px);line-height:1.65;color:rgba(255,255,255,0.7);max-width:64ch">{{ t.heroSub }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
+        <a href="#unterlagen" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:var(--swiss-red);color:#FFFFFF;font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600);color:#FFFFFF">{{ t.heroCta }}</a>
+        <a href="#bereich" style="display:inline-flex;align-items:center;height:48px;padding:0 26px;background:transparent;color:rgba(255,255,255,0.85);font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,0.28);border-radius:var(--radius-md);transition:border-color 120ms var(--ease-standard)" style-hover="border-color:rgba(255,255,255,0.7);color:#FFFFFF">{{ t.heroCta2 }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section data-screen-label="Investment Highlights" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-600)">{{ t.hlEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.hlTitle }}</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+        <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="6">
+          <div style="display:flex;flex-direction:column;gap:10px;padding:26px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-xs)">
+            <span style="font-family:var(--font-display);font-size:clamp(26px,2.6vw,34px);font-weight:800;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;color:{{ h.color }}">{{ h.value }}</span>
+            <span style="font-size:14px;line-height:1.55;color:var(--text-secondary)">{{ h.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section data-screen-label="Investment Story" style="padding:clamp(56px,8vw,96px) clamp(20px,5vw,64px);background:var(--surface-card);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:start">
+      <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.storyTitle }}</h2>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <p style="margin:0;font-size:17px;line-height:1.7;color:var(--text-secondary)">{{ t.storyText }}</p>
+        <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-tertiary)">{{ t.storyText2 }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WACHSTUMSTREIBER -->
+  <section data-screen-label="Wachstumstreiber" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary)">{{ t.growthEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.growthTitle }}</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
+        <sc-for list="{{ drivers }}" as="d" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:26px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-xs)">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+              <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-tertiary);font-variant-numeric:tabular-nums">{{ d.num }}</span>
+              <sc-if value="{{ d.planned }}" hint-placeholder-val="{{ false }}">
+                <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--radius-pill);background:var(--blue-50);color:var(--blue-600);font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase">{{ t.plannedTag }}</span>
+              </sc-if>
+            </div>
+            <span style="font-family:var(--font-display);font-size:21px;font-weight:700;letter-spacing:-0.015em">{{ d.title }}</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--text-secondary)">{{ d.sub }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTORENBEREICH -->
+  <section id="bereich" data-screen-label="Investorenbereich" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px);background:#0A0A0A url('assets/img/bg-red-glow.png') no-repeat left -25% bottom -50% / 55% auto;color:#FFFFFF">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5)">{{ t.areaEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.areaTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:rgba(255,255,255,0.68);max-width:54ch">{{ t.areaText }}</p>
+        <form onSubmit="{{ submitLogin }}" style="display:flex;flex-direction:column;gap:10px;max-width:420px;margin-top:8px">
+          <label style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.6)">{{ t.areaPw }}</label>
+          <div style="display:flex;gap:10px">
+            <input type="password" placeholder="••••••••" style="flex:1;min-width:0;height:46px;padding:0 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.22);border-radius:var(--radius-md);font-family:var(--font-sans);font-size:14px;color:#FFFFFF;outline:none" style-focus="border-color:var(--swiss-red);box-shadow:var(--focus-ring)">
+            <button type="submit" style="display:inline-flex;align-items:center;height:46px;padding:0 20px;background:var(--swiss-red);color:#FFFFFF;border:none;cursor:pointer;font-family:var(--font-sans);font-size:14px;font-weight:600;border-radius:var(--radius-md);white-space:nowrap;transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600)">{{ t.areaLogin }}</button>
+          </div>
+          <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:13px;color:var(--red-300)">{{ t.areaError }}</span>
+          </sc-if>
+          <a href="#unterlagen" style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);text-decoration:underline;text-underline-offset:3px" style-hover="color:#FFFFFF">{{ t.areaRequest }}</a>
+        </form>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+        <sc-for list="{{ docs }}" as="doc" hint-placeholder-count="6">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg)">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </span>
+            <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.9)">{{ doc }}</span>
+            <span style="font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.38)">{{ t.docLocked }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD FORM -->
+  <section id="unterlagen" data-screen-label="Unterlagen anfordern" style="padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)">
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-600)">{{ t.leadEyebrow }}</span>
+        <h2 style="margin:0;font-family:var(--font-display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-0.02em;line-height:1.12">{{ t.leadTitle }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:var(--text-secondary);max-width:52ch">{{ t.leadText }}</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;font-size:14px;color:var(--text-secondary)">
+          <a href="mailto:investors@vertt.ch" style="display:inline-flex;align-items:center;gap:9px" style-hover="color:var(--red-600)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+            investors@vertt.ch
+          </a>
+          <span style="display:inline-flex;align-items:center;gap:9px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            {{ t.leadLocation }}
+          </span>
+        </div>
+      </div>
+
+      <div style="background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-md);padding:clamp(22px,3vw,32px)">
+        <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:40px 16px;text-align:center">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--green-50);color:var(--green-600)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <div style="font-family:var(--font-display);font-size:24px;font-weight:700;letter-spacing:-0.015em">{{ t.thanks }}</div>
+            <p style="margin:0;font-size:14px;color:var(--text-secondary);max-width:46ch">{{ t.thanksSub }}</p>
+            <a href="index.html" style="margin-top:10px;display:inline-flex;align-items:center;height:40px;padding:0 18px;border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:14px;font-weight:600" style-hover="background:var(--surface-hover);color:var(--text-primary)">{{ t.thanksHome }}</a>
+          </div>
+        </sc-if>
+        <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitForm }}" style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fFirst }}" required="{{ true }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fLast }}" required="{{ true }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fCompany }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fRole }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fEmail }}" type="email" required="{{ true }}" hint-size="100%,66px"></x-import>
+              <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Input" label="{{ t.fPhone }}" type="tel" hint-size="100%,66px"></x-import>
+            </div>
+            <x-import component-from-global-scope="VerttOSDesignSystem_fffbe3.Select" label="{{ t.fInterest }}" options="{{ interestOptions }}" default-value="{{ interestDefault }}" hint-size="100%,66px"></x-import>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label style="font-size:13px;font-weight:500;color:var(--text-secondary)">{{ t.fMessage }}</label>
+              <textarea rows="4" style="resize:vertical;padding:10px 12px;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-md);font-family:var(--font-sans);font-size:14px;color:var(--text-primary);outline:none" style-focus="border-color:var(--swiss-red);box-shadow:var(--focus-ring)"></textarea>
+            </div>
+            <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.55;color:var(--text-secondary);cursor:pointer">
+              <input type="checkbox" required="{{ true }}" style="margin-top:2px;width:16px;height:16px;accent-color:var(--swiss-red);flex-shrink:0">
+              {{ t.fCheck1 }}
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.55;color:var(--text-secondary);cursor:pointer">
+              <input type="checkbox" required="{{ true }}" style="margin-top:2px;width:16px;height:16px;accent-color:var(--swiss-red);flex-shrink:0">
+              {{ t.fCheck2 }}
+            </label>
+            <button type="submit" style="align-self:flex-start;display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 28px;background:var(--swiss-red);color:#FFFFFF;border:none;cursor:pointer;font-family:var(--font-sans);font-size:15px;font-weight:600;border-radius:var(--radius-md);transition:background 120ms var(--ease-standard)" style-hover="background:var(--red-600)">
+              {{ t.fSubmit }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section data-screen-label="Disclaimer" style="padding:0 clamp(20px,5vw,64px) clamp(48px,7vw,80px)">
+    <div style="max-width:1360px;margin:0 auto;border-top:1px solid var(--border-subtle);padding-top:24px">
+      <p style="margin:0;font-size:12px;line-height:1.65;color:var(--text-tertiary);max-width:110ch">{{ t.disclaimer }}</p>
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" lang="{{ curLang }}" style="display:block" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;de&quot;, &quot;en&quot;], &quot;default&quot;: &quot;de&quot;, &quot;tsType&quot;: &quot;'de'|'en'&quot;, &quot;section&quot;: &quot;Sprache&quot;}}">
+class Component extends DCLogic {
+  state = { formSent: false, loginError: false };
+
+  getLang() {
+    try { return this.props.lang || localStorage.getItem('vertt-lang') || 'de'; } catch (e) { return 'de'; }
+  }
+
+  renderVals() {
+    const lang = this.getLang();
+    const de = {
+      heroTitle: 'Vertt AG Investor Relations',
+      heroSub: 'Beteiligung an einer Schweizer Mobility-Tech-Plattform für professionelle Mobilität, digitale Infrastruktur und multimodale Marktzugänge.',
+      heroCta: 'Unterlagen anfordern', heroCta2: 'Zum Investorenbereich',
+      hlEyebrow: 'Investment Highlights', hlTitle: 'Die Ausgangslage im Überblick',
+      highlights: [
+        { value: 'B2B & B2B2C', label: 'Schweizer Mobilitätsplattform mit zwei Marktseiten', color: 'var(--text-primary)' },
+        { value: '9’500', label: 'Potenzielle B2B-Kunden im Zielmarkt', color: 'var(--swiss-red)' },
+        { value: '3’500', label: 'Potenzielle Taxi-Operatoren im Zielmarkt', color: 'var(--swiss-red)' },
+        { value: 'CH · DACH · EU', label: 'Langfristiges Wachstumspotenzial über Märkte hinweg', color: 'var(--text-primary)' },
+        { value: 'SaaS + Transaktion', label: 'Plattformmodell mit SaaS-, Transaktions- und Integrationspotenzial', color: 'var(--text-primary)' },
+        { value: 'Plattform-Ausbau', label: 'Strategischer Ausbau über Technologie, Marktkanäle und Partnerschaften', color: 'var(--text-primary)' },
+      ],
+      storyTitle: 'Warum Vertt',
+      storyText: 'Vertt positioniert sich an der Schnittstelle von digitaler Mobilität, Enterprise Software, Plattformintegration und operativem Marktzugang.',
+      storyText2: 'Der Fokus liegt auf dem Aufbau einer skalierbaren Infrastruktur für Unternehmen, Mobilitätsanbieter und professionelle Mobilitätsprozesse – Marketplace zuerst, SaaS-Schichten darauf aufbauend.',
+      growthEyebrow: 'Strategie', growthTitle: 'Strategische Wachstumstreiber', plannedTag: 'Geplant',
+      drivers: [
+        { num: '01', title: 'B2B Mobility', sub: 'Digitale Lösungen für Unternehmen, Hotels, Kliniken, Versicherungen und institutionelle Kunden.', planned: false },
+        { num: '02', title: 'Taxi Operator Network', sub: 'Technologie, Auftragskanäle und operative Steuerung für Taxi- und Flottenpartner.', planned: false },
+        { num: '03', title: 'Multimodalität', sub: 'Integration unterschiedlicher Mobilitätsformen und digitaler Buchungskanäle.', planned: false },
+        { num: '04', title: 'Technologie & APIs', sub: 'Plattformarchitektur, Routing, Navigation, Daten, Schnittstellen und skalierbare digitale Infrastruktur.', planned: false },
+        { num: '05', title: 'Helvetic Mobility', sub: 'Strategische Wachstumsoption durch Verbindung von Technologie, Marktkanälen und bestehender operativer Mobilitätskompetenz.', planned: true },
+      ],
+      areaEyebrow: 'Geschützter Bereich', areaTitle: 'Exklusive Investorenunterlagen',
+      areaText: 'Vertiefende Informationen, Beteiligungsunterlagen und ausgewählte Dokumente stehen qualifizierten Interessenten in einem geschützten Bereich zur Verfügung.',
+      areaPw: 'Passwort', areaLogin: 'Zum Investorenbereich',
+      areaError: 'Ungültiger Zugangscode. Bitte fordern Sie unten Zugang an.',
+      areaRequest: 'Zugang anfragen',
+      docLocked: 'Gesperrt',
+      docs: ['Investoren Memo', 'Beteiligungsdossier', 'Finanzübersicht', 'Strategische Roadmap', 'Medienberichte', 'Investoren Video'],
+      leadEyebrow: 'Kontakt', leadTitle: 'Unterlagen anfordern',
+      leadText: 'Hinterlassen Sie Ihre Kontaktdaten. Wir prüfen Ihre Anfrage und senden Ihnen die relevanten Investorenunterlagen zu.',
+      leadLocation: 'Zürich, Schweiz',
+      fFirst: 'Vorname', fLast: 'Nachname', fCompany: 'Unternehmen / Family Office', fRole: 'Funktion',
+      fEmail: 'E-Mail', fPhone: 'Telefonnummer', fInterest: 'Investitionsinteresse', fMessage: 'Nachricht',
+      interestOpts: ['Direktbeteiligung', 'Family Office', 'Venture Capital / PE', 'Strategischer Partner', 'Anderes'],
+      interestDefault: 'Direktbeteiligung',
+      fCheck1: 'Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Angaben zu.',
+      fCheck2: 'Ich bestätige, dass ich die Informationen ausschliesslich zu Informationszwecken anfordere.',
+      fSubmit: 'Investorenunterlagen anfordern',
+      thanks: 'Vielen Dank für Ihre Anfrage.', thanksSub: 'Wir prüfen Ihre Angaben und melden uns zeitnah mit den relevanten Unterlagen.', thanksHome: 'Zur Startseite',
+      disclaimer: 'Diese Seite dient ausschliesslich Informationszwecken und stellt weder ein öffentliches Angebot noch eine Aufforderung zum Kauf oder zur Zeichnung von Aktien oder anderen Finanzinstrumenten dar. Sie ist weder ein Emissionsprospekt im Sinne des schweizerischen Rechts noch eine Anlageberatung. Investitionen in nicht börsenkotierte Unternehmen sind mit erheblichen Risiken verbunden und können zu einem teilweisen oder vollständigen Verlust des investierten Kapitals führen. Vergangene Entwicklungen sind keine Garantie für zukünftige Ergebnisse.',
+    };
+    const en = {
+      heroTitle: 'Vertt AG Investor Relations',
+      heroSub: 'An opportunity in a Swiss mobility-tech platform for professional mobility, digital infrastructure and multimodal market access.',
+      heroCta: 'Request materials', heroCta2: 'Investor area',
+      hlEyebrow: 'Investment highlights', hlTitle: 'The starting position at a glance',
+      highlights: [
+        { value: 'B2B & B2B2C', label: 'Swiss mobility platform with two market sides', color: 'var(--text-primary)' },
+        { value: '9,500', label: 'Potential B2B clients in the target market', color: 'var(--swiss-red)' },
+        { value: '3,500', label: 'Potential taxi operators in the target market', color: 'var(--swiss-red)' },
+        { value: 'CH · DACH · EU', label: 'Long-term growth potential across markets', color: 'var(--text-primary)' },
+        { value: 'SaaS + transaction', label: 'Platform model with SaaS, transaction and integration potential', color: 'var(--text-primary)' },
+        { value: 'Platform build-out', label: 'Strategic expansion via technology, market channels and partnerships', color: 'var(--text-primary)' },
+      ],
+      storyTitle: 'Why Vertt',
+      storyText: 'Vertt positions itself at the intersection of digital mobility, enterprise software, platform integration and operational market access.',
+      storyText2: 'The focus is on building scalable infrastructure for businesses, mobility providers and professional mobility processes — marketplace first, SaaS layers compounding on top.',
+      growthEyebrow: 'Strategy', growthTitle: 'Strategic growth drivers', plannedTag: 'Planned',
+      drivers: [
+        { num: '01', title: 'B2B mobility', sub: 'Digital solutions for businesses, hotels, clinics, insurers and institutional clients.', planned: false },
+        { num: '02', title: 'Taxi operator network', sub: 'Technology, demand channels and operational control for taxi and fleet partners.', planned: false },
+        { num: '03', title: 'Multimodality', sub: 'Integration of different mobility modes and digital booking channels.', planned: false },
+        { num: '04', title: 'Technology & APIs', sub: 'Platform architecture, routing, navigation, data, interfaces and scalable digital infrastructure.', planned: false },
+        { num: '05', title: 'Helvetic Mobility', sub: 'Strategic growth option combining technology, market channels and existing operational mobility expertise.', planned: true },
+      ],
+      areaEyebrow: 'Protected area', areaTitle: 'Exclusive investor materials',
+      areaText: 'In-depth information, participation documents and selected materials are available to qualified parties in a protected area.',
+      areaPw: 'Password', areaLogin: 'Enter investor area',
+      areaError: 'Invalid access code. Please request access below.',
+      areaRequest: 'Request access',
+      docLocked: 'Locked',
+      docs: ['Investor memo', 'Participation dossier', 'Financial overview', 'Strategic roadmap', 'Press coverage', 'Investor video'],
+      leadEyebrow: 'Contact', leadTitle: 'Request materials',
+      leadText: 'Leave your contact details. We review each request and send the relevant investor materials.',
+      leadLocation: 'Zurich, Switzerland',
+      fFirst: 'First name', fLast: 'Last name', fCompany: 'Company / family office', fRole: 'Role',
+      fEmail: 'Email', fPhone: 'Phone', fInterest: 'Investment interest', fMessage: 'Message',
+      interestOpts: ['Direct participation', 'Family office', 'Venture capital / PE', 'Strategic partner', 'Other'],
+      interestDefault: 'Direct participation',
+      fCheck1: 'I have read the privacy policy and consent to the processing of my details.',
+      fCheck2: 'I confirm that I am requesting this information for informational purposes only.',
+      fSubmit: 'Request investor materials',
+      thanks: 'Thank you for your request.', thanksSub: 'We will review your details and follow up shortly with the relevant materials.', thanksHome: 'Back to home',
+      disclaimer: 'This page is for information purposes only and constitutes neither a public offer nor a solicitation to purchase or subscribe to shares or other financial instruments. It is neither an issuance prospectus within the meaning of Swiss law nor investment advice. Investments in unlisted companies involve significant risks and may lead to a partial or complete loss of the invested capital. Past performance is no guarantee of future results.',
+    };
+    const t = lang === 'en' ? en : de;
+    return {
+      t, curLang: lang,
+      highlights: t.highlights, drivers: t.drivers, docs: t.docs,
+      interestOptions: t.interestOpts, interestDefault: t.interestDefault,
+      loginError: this.state.loginError,
+      submitLogin: (e) => { e.preventDefault(); this.setState({ loginError: true }); },
+      formSent: this.state.formSent,
+      formOpen: !this.state.formSent,
+      submitForm: (e) => { e.preventDefault(); this.setState({ formSent: true }); },
+    };
+  }
+}
+</script>
 </body>
 </html>

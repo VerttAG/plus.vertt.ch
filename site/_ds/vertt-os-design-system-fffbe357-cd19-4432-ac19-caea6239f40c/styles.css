@@ -1,6 +1,6 @@
 /* ============================================================
-   Vertt OS Design System — token entry point
-   Mirrors project/_ds/.../styles.css import order.
+   Vertt OS Design System — global entry point
+   Consumers link THIS file only. Import order = cascade order.
    ============================================================ */
 
 @import url('./tokens/fonts.css');
